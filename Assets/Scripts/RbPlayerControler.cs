@@ -8,7 +8,6 @@ public class PlayerMovementController : MonoBehaviour
 
     private InputAction _look;
     private InputAction _move;
-    private InputAction _fire;
 
     private Rigidbody _rb;
     
@@ -34,7 +33,6 @@ public class PlayerMovementController : MonoBehaviour
         actionMap.Enable();
         _look = actionMap.FindAction("Look");
         _move = actionMap.FindAction("Move");
-        _fire = actionMap.FindAction("Fire");
 
         if (cam == null) cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
@@ -80,8 +78,6 @@ public class PlayerMovementController : MonoBehaviour
         float viewHorz = rawLookInput.x;
         if (invertVert) viewVert *= -1;
         if (invertHorz) viewHorz *= -1;
-
-        Debug.Log(rawLookInput);
 
         float newVert = vertAngle + viewVert;
         vertAngle = Mathf.Clamp(newVert, vertMin, vertMax);
