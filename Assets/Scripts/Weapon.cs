@@ -11,16 +11,34 @@ public struct TriggerPullInformation
 
 public class Weapon : MonoBehaviour
 {
+    public LayerMask Shootable;
+    public float Range = 10f;
+    public float HitForce = 10f;
     public Transform BarrelEnd;
     public Bullet BulletObj;
 
     public void PullTrigger(TriggerPullInformation pullInformation)
     {
+        var ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
+        var hit = false;
         if (pullInformation.durationHeld == 0)
         {
             var newBullet = Instantiate(BulletObj, BarrelEnd.position, BarrelEnd.rotation);
-            newBullet.Fire();
+            
+            
+            if (Physics.Raycast(ray, out var hitInfo, Range, Shootable))
+            {
+                hit = true;
+                if (hitInfo.rigidbody)
+                {
+                    hitInfo.rigidbody.AddForceAtPosition(ray.direction * HitForce, hitInfo.point, ForceMode.Impulse);
+                }
+                
+                Debug.Log($"Shot {hitInfo.transform.gameObject.name}", hitInfo.transform);
+            }
         }
         
+        Debug.DrawRay(ray.origin, ray.direction*Range, hit ? Color.green : Color.red);
+
     }
 }
