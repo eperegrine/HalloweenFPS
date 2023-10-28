@@ -11,11 +11,16 @@ public struct TriggerPullInformation
 
 public class Weapon : MonoBehaviour
 {
+    [Header("Shooting")]
     public LayerMask Shootable;
     public float Range = 10f;
     public float HitForce = 10f;
+    
     public Transform BarrelEnd;
     public Bullet BulletObj;
+    
+    [Header("Effects")]
+    public ParticleSystem MuzzleFlash;
 
     public void PullTrigger(TriggerPullInformation pullInformation)
     {
@@ -23,8 +28,9 @@ public class Weapon : MonoBehaviour
         var hit = false;
         if (pullInformation.durationHeld == 0)
         {
+            MuzzleFlash.time = 0;
+            MuzzleFlash.Play(true);
             var newBullet = Instantiate(BulletObj, BarrelEnd.position, BarrelEnd.rotation);
-            
             
             if (Physics.Raycast(ray, out var hitInfo, Range, Shootable))
             {
