@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour
         {
             MuzzleFlash.time = 0;
             MuzzleFlash.Play(true);
-            var newBullet = Instantiate(BulletObj, BarrelEnd.position, BarrelEnd.rotation);
+            // var newBullet = Instantiate(BulletObj, BarrelEnd.position, BarrelEnd.rotation);
             
             if (Physics.Raycast(ray, out var hitInfo, Range, Shootable))
             {
@@ -38,6 +38,15 @@ public class Weapon : MonoBehaviour
                 if (hitInfo.rigidbody)
                 {
                     hitInfo.rigidbody.AddForceAtPosition(ray.direction * HitForce, hitInfo.point, ForceMode.Impulse);
+                }
+
+                if (hitInfo.collider.gameObject.CompareTag("Enemy"))
+                {
+                    var ghost = hitInfo.collider.gameObject.GetComponentInParent<GhostBehaviour>();
+                    if (ghost)
+                    {
+                        ghost.TakeDamage(2);
+                    }
                 }
                 
                 Debug.Log($"Shot {hitInfo.transform.gameObject.name}", hitInfo.transform);
