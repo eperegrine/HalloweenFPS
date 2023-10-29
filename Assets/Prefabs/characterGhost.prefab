@@ -400,7 +400,6 @@ GameObject:
   - component: {fileID: 138081084350448134}
   - component: {fileID: 3297753116988876106}
   - component: {fileID: 1961831528870559655}
-  - component: {fileID: 3925585021346559542}
   m_Layer: 7
   m_Name: characterGhost
   m_TagString: Enemy
@@ -483,21 +482,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!111 &3925585021346559542
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6413617645899438039}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 52e63a47178c749459006537ca95b170, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &8595543851974666758
 GameObject:
   m_ObjectHideFlags: 0
