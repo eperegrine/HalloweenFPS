@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,8 +22,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public GameObject GameOverUI;
     public Slider HealthBar;
     public PlayerBehaviourController Player;
+
+    private void Awake()
+    {
+        GameOverUI.SetActive(false);
+    }
 
     public void NotifyHealthPercent(float percent)
     {
@@ -32,7 +39,8 @@ public class GameManager : MonoBehaviour
     public void PlayerDeath()
     {
         Debug.Log("Game Over!");
-        Invoke(nameof(Restart), 1f);
+        GameOverUI.SetActive(true);
+        Invoke(nameof(Restart), 2f);
     }
 
     public void Restart()
