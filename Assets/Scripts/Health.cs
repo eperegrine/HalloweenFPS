@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     public float MaxHealth = 10f;
     public float CurrentHealth { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         CurrentHealth = MaxHealth;
     }
@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(float amt)
     {
         CurrentHealth -= amt;
+
         if (CurrentHealth <= 0)
         {
             RunDeath();

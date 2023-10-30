@@ -422,6 +422,7 @@ Transform:
   m_Children:
   - {fileID: 111116287559353253}
   - {fileID: 1750656273449013896}
+  - {fileID: 5051343249547944371}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 224.458, z: 0}
 --- !u!114 &138081084350448134
@@ -438,6 +439,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 8461173153115995948}
   target: {fileID: 0}
+  BarrelEnd: {fileID: 5051343249547944371}
+  Bullet: {fileID: 305520491496165161, guid: 1a1f9296add85034cb131754aa2f02e8, type: 3}
+  FiringDistance: 7
+  FireRate: 3
   MaxHealth: 10
 --- !u!195 &3297753116988876106
 NavMeshAgent:
@@ -482,6 +487,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &7760606616813517858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5051343249547944371}
+  m_Layer: 7
+  m_Name: BarrelEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5051343249547944371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7760606616813517858}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00000008940697, y: 1.5, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2238716941005356656}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8595543851974666758
 GameObject:
   m_ObjectHideFlags: 0

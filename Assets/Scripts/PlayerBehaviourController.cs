@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(PlayerHealth))]
 public class PlayerBehaviourController : MonoBehaviour
 {
 
@@ -14,7 +15,7 @@ public class PlayerBehaviourController : MonoBehaviour
     public Transform WeaponRoot;
 
     public Weapon CurrentWeapon;
-    private Health _health;
+    private PlayerHealth _health;
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class PlayerBehaviourController : MonoBehaviour
         var actionMap = input.FindActionMap("FPS");
         actionMap.Enable();
         _fire = actionMap.FindAction("Fire");
-        _health = GetComponent<Health>();
+        _health = GetComponent<PlayerHealth>();
         _health.TakeDamage(2);
     }
 

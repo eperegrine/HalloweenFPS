@@ -468,11 +468,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 149035843496421496, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
   m_PrefabInstance: {fileID: 2432300998766935474}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &253772415
+--- !u!114 &253772415 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3113832760205835594, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
+  m_PrefabInstance: {fileID: 2432300998766935474}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253772408}
   m_Enabled: 1
@@ -480,22 +479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e611034196d7f874ab3eae0cf8d66b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: -944628639613478452, guid: 999dd19b2a0df81418edd661a9caafb8, type: 3}
-  WeaponRoot: {fileID: 304561441}
-  CurrentWeapon: {fileID: 1327798444}
---- !u!114 &253772422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253772408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de508ef838047b47b71947e7d2dc949, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 10
 --- !u!1 &304561440
 GameObject:
   m_ObjectHideFlags: 0
@@ -4950,22 +4933,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 149035843496421496, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 149035843496421496, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5698573375562500969, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5698573375562500969, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 3113832760205835594, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
+      propertyPath: WeaponRoot
+      value: 
+      objectReference: {fileID: 304561441}
+    - target: {fileID: 3113832760205835594, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
+      propertyPath: CurrentWeapon
+      value: 
+      objectReference: {fileID: 1327798444}
     - target: {fileID: 8443115529982276333, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.96
@@ -5009,13 +4984,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 149035843496421496, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 253772415}
-    - targetCorrespondingSourceObject: {fileID: 149035843496421496, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 253772422}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8643c3b13224022478565bcdaeb1cb8f, type: 3}
 --- !u!1001 &2687007144342500168
 PrefabInstance:
@@ -5398,6 +5367,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 138081084350448134, guid: 40a307b69041f6c42bcc2273a5dbf848, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 253772408}
     - target: {fileID: 2238716941005356656, guid: 40a307b69041f6c42bcc2273a5dbf848, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8

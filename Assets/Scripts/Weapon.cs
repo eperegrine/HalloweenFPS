@@ -38,7 +38,6 @@ public class Weapon : MonoBehaviour
     {
         var ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
         var hit = false;
-        Debug.Log($"LFA: {LastFiredAt}, Time: {Time.time}, LFA-Time:: {LastFiredAt-Time.time}");
         if (pullInformation.durationHeld == 0 && Time.time-LastFiredAt >= FireRate)
         {
             MuzzleFlash.time = 0;
