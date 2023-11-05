@@ -24,12 +24,16 @@ public class Weapon : MonoBehaviour
     [Header("Effects")]
     public ParticleSystem MuzzleFlash;
 
+    public AudioClip FireSound;
+    public AudioSource FireAudioSource;
+
     private Animator _animator;
     private static readonly int Fire = Animator.StringToHash("Fire");
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        if (FireAudioSource == null) FireAudioSource = GetComponent<AudioSource>();
     }
 
     private float LastFiredAt = 0f;
@@ -44,6 +48,7 @@ public class Weapon : MonoBehaviour
             MuzzleFlash.Play(true);
             _animator.SetTrigger(Fire);
             LastFiredAt = Time.time;
+            FireAudioSource.PlayOneShot(FireSound);
             // var newBullet = Instantiate(BulletObj, BarrelEnd.position, BarrelEnd.rotation);
             
             if (Physics.Raycast(ray, out var hitInfo, Range, Shootable))
