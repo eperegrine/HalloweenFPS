@@ -10,6 +10,12 @@ public struct TriggerPullInformation
     public bool triggered;
 }
 
+public enum WeaponState
+{
+    Normal,
+    Reloading
+}
+
 public class Weapon : MonoBehaviour
 {
     [Header("Shooting")]
@@ -20,6 +26,15 @@ public class Weapon : MonoBehaviour
     
     public Transform BarrelEnd;
     public Bullet BulletObj;
+
+    [Header("Ammo")] 
+    public int MaxAmmo = 240;
+    public int ClipSize = 10;
+    public float ReloadDuration = 1;
+
+    private int _currentAmmo = 30;
+    private int _currentClip;
+    
     
     [Header("Effects")]
     public ParticleSystem MuzzleFlash;
@@ -28,7 +43,9 @@ public class Weapon : MonoBehaviour
     public AudioSource FireAudioSource;
 
     private Animator _animator;
-    private static readonly int Fire = Animator.StringToHash("Fire");
+    private static readonly int AnimatorFireTrigger = Animator.StringToHash("Fire");
+    private static readonly int AnimatorReloadTrigger = Animator.StringToHash("Reload");
+    private WeaponState _currentState = WeaponState.Normal;
 
     private void Start()
     {
@@ -42,15 +59,26 @@ public class Weapon : MonoBehaviour
     {
         var ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
         var hit = false;
-        if (pullInformation.durationHeld == 0 && Time.time-LastFiredAt >= FireRate)
+
+        Debug.Log($"[FIRE] Ammo: {_currentAmmo}, Clip {_currentClip}");
+
+        
+        if (_currentState == WeaponState.Normal && _currentClip <= 0 && _currentAmmo >= 1)
         {
+            Reload();
+        }
+        
+        if (_currentState == WeaponState.Normal && _currentClip > 0 && pullInformation.durationHeld == 0 && Time.time-LastFiredAt >= FireRate)
+        {
+            //Handle Logic and Fire Events
             MuzzleFlash.time = 0;
             MuzzleFlash.Play(true);
-            _animator.SetTrigger(Fire);
+            _animator.SetTrigger(AnimatorFireTrigger);
             LastFiredAt = Time.time;
             FireAudioSource.PlayOneShot(FireSound);
-            // var newBullet = Instantiate(BulletObj, BarrelEnd.position, BarrelEnd.rotation);
+            _currentClip--;
             
+            //Simulate Bullet via raycast
             if (Physics.Raycast(ray, out var hitInfo, Range, Shootable))
             {
                 hit = true;
@@ -73,6 +101,32 @@ public class Weapon : MonoBehaviour
         }
         
         Debug.DrawRay(ray.origin, ray.direction*Range, hit ? Color.green : Color.red);
+    }
 
+    public void Reload()
+    {
+        _currentState = WeaponState.Reloading;
+        _animator.SetTrigger(AnimatorReloadTrigger);
+        Invoke(nameof(Reload_Actual), ReloadDuration);
+    }
+    
+    /// <summary>
+    /// This sets the clip values for a reload, use Reload to trigger player animation and state change
+    /// </summary>
+    public void Reload_Actual()
+    {
+        _currentState = WeaponState.Normal;
+        var clipDeficit = ClipSize - _currentClip;
+        if (clipDeficit <= _currentAmmo)
+        {
+            _currentAmmo -= clipDeficit;
+            _currentClip += clipDeficit;
+        }
+        else
+        {
+            _currentClip += _currentAmmo;
+            _currentAmmo = 0;
+        }
+        Debug.Log($"Ammo: {_currentAmmo}, Clip {_currentClip}");
     }
 }

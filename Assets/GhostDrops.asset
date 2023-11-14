@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09e505ce1214bb5ba1c335e37667ca0, type: 3}
+  m_Name: GhostDrops
+  m_EditorClassIdentifier: 
+  maxLoop: 15
+  Drops:
+  - Loot: {fileID: 7571833354166643502, guid: 48c1b25f6abefa8498b7941522bf6dee, type: 3}
+    DropRate: 1

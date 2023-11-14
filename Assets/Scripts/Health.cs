@@ -14,6 +14,12 @@ public class Health : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
+    public void Heal(float amt)
+    {
+        CurrentHealth += amt;
+        if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
+    }
+
     public void TakeDamage(float amt)
     {
         CurrentHealth -= amt;
